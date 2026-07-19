@@ -1,0 +1,125 @@
+## 本課要點
+
+- OpenCode 支援邊啲模型？點樣揀？
+- 免費模型 vs 付費模型：咩場景用咩
+- 國內模型推薦：DeepSeek、Qwen、GLM
+- 配置模型嘅方法同注意事項
+
+---
+
+## 1. OpenCode 支援嘅模型
+
+OpenCode 係模型無關嘅工具——佢支援市面上絕大部分大語言模型：
+
+| 類型 | 模型 | 特點 |
+|---|---|---|
+| 免費內置 | DeepSeek V4 Flash Free | 每日約 200 次調用，學習夠用 |
+| 免費內置 | MIMO 2.5 | 小米出品，速度幾快 |
+| 國內付費 | DeepSeek V4 Pro/Flash | 成本低，性價比高 |
+| 國內付費 | GLM-4 (智譜) | 穩定，適閤中國企業 |
+| 國內付費 | Qwen (通義千問) | 阿里出品，能力全面 |
+| 國外付費 | GPT-4o / GPT-4.1 | 能力最強，但需要國外支付方式 |
+| 國外付費 | Claude Sonnet/Opus | 編程能力出色，亦需要國外支付 |
+
+---
+
+## 2. 免費 vs 付費：點樣揀？
+
+### 免費模型（開箱即用）
+
+OpenCode 預載咗兩個免費模型，安裝完就用得：
+
+- **DeepSeek V4 Flash Free** — 速度幾快，日常任務夠用
+- **MIMO 2.5** — 小米出品，表現穩定
+
+> 免費模型每日有大約 200 次調用，適合學習、嘗鮮、簡單任務。
+
+### 付費國內模型（推薦）
+
+如果你打算認真使用，建議接入自己嘅 API Key：
+
+| 模型 | 大概價格 | 適合場景 |
+|---|---|---|
+| DeepSeek V4 Flash | ~¥1/百萬 token | 日常任務、大批量處理 |
+| DeepSeek V4 Pro | ~¥8/百萬 token | 複雜推理、重要任務 |
+| GLM-4 Flash | ~¥0.5/百萬 token | 成本敏感場景 |
+
+> DeepSeek V4 Flash 性價比最高，建議作為默認模型。
+
+### 點樣配置 API Key？
+
+喺 OpenCode 中直接講：
+
+> 幫我加入 DeepSeek API Key，我嘅 Key 係 sk-xxxxxx
+
+AI 會自動幫你配置好。
+
+---
+
+## 3. 模型選擇策略
+
+### 簡單任務 → 用平價模型
+
+例如：合併 Excel、格式轉換、數據清洗
+
+- 推薦：DeepSeek V4 Flash 或 GLM-4 Flash
+- 成本：幾乎可以忽略
+
+### 複雜任務 → 用強力模型
+
+例如：寫複雜程式、架構設計、合同審閱
+
+- 推薦：DeepSeek V4 Pro 或 GPT-4o
+- 成本：較高，但值得
+
+### 慳錢技巧
+
+用 oh-my-opencode-slim 插件時，可以將唔同 Agent 設定唔同模型：
+
+- Orchestrator / Oracle（需要深度推理）→ 用 Pro 模型
+- Fixer / Explorer（大量但簡單）→ 用 Flash 模型
+
+---
+
+## 4. 模型配置方法
+
+### 方法一：叫 AI 幫手（最簡單）
+
+直接喺 OpenCode 講：
+
+> 幫我配置 DeepSeek 模型，我嘅 API Key 係 sk-xxxxxx
+
+### 方法二：手動配置
+
+打開設定，喺模型列表中加入：
+
+```json
+{
+  "providers": [
+    {
+      "name": "deepseek",
+      "apiKey": "sk-xxxxxx",
+      "baseUrl": "https://api.deepseek.com"
+    }
+  ]
+}
+```
+
+---
+
+## 常見問題
+
+**Q：免費模型用完額度會點？**
+A：第二日會重置。或者你可以接入自己嘅 API Key 繼續用。
+
+**Q：國內模型同國外模型差距大嗎？**
+A：以 DeepSeek V4 為例，能力已經非常接近 GPT-4o，日常使用完全夠用。
+
+**Q：我應該用邊個模型？**
+A：新手建議先用免費模型，熟悉之後接入 DeepSeek V4 Flash 作為日常模型。
+
+---
+
+## 下一步
+
+揀好模型後，進入第4課安裝 OpenCode 終端版。

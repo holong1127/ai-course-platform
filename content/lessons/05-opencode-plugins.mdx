@@ -1,0 +1,87 @@
+## 本課要點
+
+- 理解兩個插件嘅作用
+- 正確嘅安裝順序（先配模型，再裝插件！）
+- 安裝 Superpowers 插件（任務規劃）
+- 安裝 oh-my-opencode-slim 插件（多智能體協作）
+- 避坑指南
+
+---
+
+## 1. 點解要裝插件？
+
+默認嘅 OpenCode 就好似一個**啱啱返工嘅實習生**——你叫佢做咩佢就做咩，做得好唔好全靠彩數。
+
+裝咗插件之後，佢就變成咗一個**成熟嘅會計團隊**：
+
+| 冇插件 | 有插件 |
+|---|---|
+| 你講咩佢做咩 | 先同你確認需求，再規劃，再執行 |
+| 一個 AI 做晒所有嘢 | 唔同任務分俾擅長嘅人做 |
+| 直接上手寫 Code | 先出方案、拆任務、再動手 |
+
+接下來要裝嘅兩個插件，一個負責「想清楚先做」，一個負責「搵啱人開工」。
+
+---
+
+## 2. Superpowers — 等 AI 先想清楚再動手
+
+### 安裝
+
+喺 OpenCode 中直接講：
+
+> 幫我安裝 Superpowers 插件，使用國內鏡像
+
+或者喺終端中執行：
+
+```bash
+npm install -g opencode-superpowers --registry https://registry.npmmirror.com
+```
+
+安裝完成後重啟 OpenCode。
+
+---
+
+## 3. oh-my-opencode-slim — 等啱嘅人做啱嘅事
+
+### 安裝
+
+> 幫我安裝 oh-my-opencode-slim 插件，GitHub 地址係 https://github.com/alvinunreal/oh-my-opencode-slim，使用國內鏡像
+
+安裝過程中會問你幾個問題：
+
+| 問題 | 點樣揀 |
+|---|---|
+| 選擇預設模型 | **揀你已經有 API Key 嘅嗰個** |
+| 是否安裝 Skills | 揀 Yes |
+| 是否安裝 Tmux | 揀 No |
+
+### 驗證安裝
+
+重啟 OpenCode 後，底部會多咗幾個模式選項。
+
+---
+
+## 4. 避坑指南
+
+### Plan / Build 模式消失咗？
+
+呢個係最常見嘅問題。解決方法：
+
+1. 去 OpenCode **設定 → 通用 → 高級**
+2. 打開「自定義智能體」開關
+3. 如果仲係唔得，打開 `opencode.jsonc`，將 `plan.disable` 同 `build.disable` 改為 `false`
+
+### 模型列表變空？
+
+配置文件俾插件覆蓋咗。刪除 `.config/opencode` 文件夾重新配置，或者叫 AI 幫你修復。
+
+---
+
+## 關鍵收穫
+
+記住安裝口訣：**先有大腦（配模型），再配團隊（裝插件）**。
+
+兩個插件一句話總結：
+- **Superpowers** — 等 AI 似「有經驗嘅項目經理」一樣，先規劃再動手
+- **oh-my-opencode-slim** — 等 AI 似「分工明確嘅團隊」一樣，唔同任務交俾最擅長嘅人
