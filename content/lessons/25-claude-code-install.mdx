@@ -1,0 +1,49 @@
+## 本課要點
+
+- 引入 Anthropic 官方嘅 Claude Code
+- 同 OpenCode 高度相容、可以共存
+- 安裝四步走：Node.js → Claude Code → cc-switch → 配置模型
+
+---
+
+## 1. 多一個選擇
+
+Claude Code 係 Anthropic 官方出嘅 CLI 工具，同 OpenCode 高度相容。
+
+兩個工具可以共存，你可以按需要揀用邊個。
+
+---
+
+## 2. 安裝四步
+
+### Step 1：裝 Node.js（第4課已裝）
+
+### Step 2：裝 Claude Code
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+### Step 3：裝 cc-switch（接入國內模型）
+
+```bash
+npx cc-switch install
+```
+
+### Step 4：配置模型
+
+填 API Key、模型檔位映射。
+
+---
+
+## 3. Claude Code 嘅優勢
+
+- **內置聯網搜尋** — 唔使另裝插件
+- **裝插件 `/plugin` 一條龍** — 更方便
+- **Windows 上更穩定**
+
+---
+
+## 關鍵收穫
+
+OpenCode + Claude Code 兩個工具一齊用，互補長短。

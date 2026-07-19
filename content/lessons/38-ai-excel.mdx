@@ -1,0 +1,47 @@
+## 本課要點
+
+- AI 只係大腦，操作 Excel 必需俾佢裝「手」
+- 三種方案對比
+- 兩個現成 Skills
+
+---
+
+## 1. 三種方案
+
+### Pandas + OpenPyXL
+
+最常用，讀數據、寫公式都可以，但可能改壞格式。
+
+### Xlwings
+
+調用 Excel 原生接口，格式安全，Mac/Windows 通用。
+
+### Win32com
+
+Windows 專用，適合重度批量自動化。
+
+---
+
+## 2. 點樣揀？
+
+| 場景 | 推薦方案 |
+|---|---|
+| 簡單讀寫數據 | Pandas + OpenPyXL |
+| 需要保留格式 | Xlwings |
+| Windows 重度批量 | Win32com |
+
+---
+
+## 3. 現成 Skills
+
+用 find-skills 搜：
+
+> 幫我搵 Excel 相關嘅 Skills
+
+有 Anthropic 官方 XLSX Skills（131K+ 下載）同 Excel Automation Skills 可用。
+
+---
+
+## 關鍵收穫
+
+AI 操作 Excel 嘅關鍵係揀啱「手」。唔同場景用唔同方案，先諗清楚再做。
