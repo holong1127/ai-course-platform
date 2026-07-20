@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase-client";
 
-const PRICE_HKD = 899;
+const PRICE_HKD = 288;
 
 export function PricingCard() {
   const [loading, setLoading] = useState(false);
