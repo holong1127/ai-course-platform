@@ -17,9 +17,14 @@ export async function POST(req: Request) {
               name: "AI 辦公達人 — 完整課程",
               description: "全部 45 課 + WhatsApp 學員群組",
             },
-            unit_amount: parseInt(
-              process.env.COURSE_PRICE_HKD || "89900"
-            ),
+            unit_amount: (() => {
+              const raw = process.env.COURSE_PRICE_HKD || "89900";
+              const val = parseInt(raw, 10);
+              if (isNaN(val) || val <= 0) {
+                throw new Error(`Invalid COURSE_PRICE_HKD: "${raw}"`);
+              }
+              return val;
+            })(),
           },
           quantity: 1,
         },

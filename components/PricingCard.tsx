@@ -51,19 +51,71 @@ export function PricingCard() {
     setLoading(true);
     setError(null);
 
+    const password = Math.random().toString(36).slice(2, 10) + "Aa1!";
     const supabase = createClient();
-    const { error: signUpError } = await supabase.auth.signUp({
+
+    // Try to sign up — if account already exists, redirect to login
+    const { error: signUpError, data } = await supabase.auth.signUp({
       email,
-      password: Math.random().toString(36).slice(2, 10),
+      password,
     });
 
     if (signUpError) {
-      setError(signUpError.message);
+      if (signUpError.message?.includes("rate_limit") || signUpError.message?.includes("rate limit")) {
+        setError("註冊次數過多，請等幾分鐘後再試");
+      } else {
+        setError("此 email 已註冊，請先登入");
+      }
       setLoading(false);
       return;
     }
 
-    router.push("/login");
+    // If user already existed (not newly created), redirect to login
+    if (data?.user?.identities?.length === 0) {
+      setError("此 email 已註冊，請先登入");
+      setLoading(false);
+      return;
+    }
+
+    // Auto-login after signup
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (signInError) {
+      setError("自動登入失敗，請手動登入");
+      setLoading(false);
+      return;
+    }
+
+    // Re-fetch user after login
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      setError("自動登入失敗，請手動登入");
+      setLoading(false);
+      return;
+    }
+
+    // Proceed to Stripe checkout
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: user.id, email: user.email }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || "付款創建失敗");
+      }
+
+      const { url } = await res.json();
+      if (url) window.location.href = url;
+    } catch (err: any) {
+      setError(err.message);
+    }
+
     setLoading(false);
   };
 
