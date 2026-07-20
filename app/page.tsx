@@ -9,27 +9,36 @@ export default function HomePage() {
     <div>
       {/* Hero */}
       <section className="bg-gradient-to-br from-primary-600 to-primary-800 text-white">
-        <div className="mx-auto px-4 py-20 text-center">
-          <h1 className="text-4xl font-bold md:text-5xl">
-            AI 幫你完成辦公室所有重複工作
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-primary-100">
-            唔使識寫 Code，唔使用外國工具。一門課程，教你用 AI
-            自動化會計入帳、對數、報表、文書處理，仲有其他辦公室工種。
-          </p>
-          <div className="mt-8 flex justify-center gap-4">
-            <Link
-              href="/outline"
-              className="rounded-lg bg-white px-6 py-3 font-medium text-primary-700 hover:bg-primary-50"
-            >
-              免費試睇 {freeLessons.length} 課
-            </Link>
-            <Link
-              href="/pricing"
-              className="rounded-lg border border-white/30 px-6 py-3 font-medium text-white hover:bg-white/10"
-            >
-              睇吓定價
-            </Link>
+        <div className="mx-auto flex flex-col items-center px-4 py-20 md:flex-row md:gap-12 md:text-left">
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-4xl font-bold md:text-5xl">
+              AI 幫你完成辦公室所有重複工作
+            </h1>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-primary-100 md:mx-0">
+              唔使識寫 Code，唔使用外國工具。一門課程，教你用 AI
+              自動化會計入帳、對數、報表、文書處理，仲有其他辦公室工種。
+            </p>
+            <div className="mt-8 flex justify-center gap-4 md:justify-start">
+              <Link
+                href="/outline"
+                className="rounded-lg bg-white px-6 py-3 font-medium text-primary-700 hover:bg-primary-50"
+              >
+                免費試睇 {freeLessons.length} 課
+              </Link>
+              <Link
+                href="/pricing"
+                className="rounded-lg border border-white/30 px-6 py-3 font-medium text-white hover:bg-white/10"
+              >
+                睇吓定價
+              </Link>
+            </div>
+          </div>
+          <div className="mt-8 shrink-0 md:mt-0">
+            <img
+              src="/robot.gif"
+              alt=""
+              className="h-48 w-auto md:h-64"
+            />
           </div>
         </div>
       </section>

@@ -24,7 +24,8 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <Link href="/" className="text-xl font-bold text-primary-600">
+        <Link href="/" className="flex items-center gap-2 text-xl font-bold text-primary-600">
+          <img src="/robot.gif" alt="" className="h-8 w-auto" />
           AI 辦公達人
         </Link>
         <nav className="flex items-center gap-6">
