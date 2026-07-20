@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import { lessons, getLesson } from "@/lib/lessons";
 import fs from "fs/promises";
 import path from "path";
@@ -87,7 +88,7 @@ export default async function LessonPage({
       {hasAccess ? (
         content ? (
           <div className="prose prose-gray max-w-none">
-            <MDXRemote source={content} />
+            <MDXRemote source={content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
           </div>
         ) : (
           <div className="rounded-lg border border-amber-200 bg-amber-50 p-6">

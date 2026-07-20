@@ -138,3 +138,15 @@
     @apply font-sans;
   }
 }
+
+/* Table borders in prose content */
+.prose table {
+  @apply border-collapse;
+}
+.prose th,
+.prose td {
+  @apply border border-gray-300 px-3 py-2;
+}
+.prose thead th {
+  @apply bg-gray-50 font-semibold;
+}
