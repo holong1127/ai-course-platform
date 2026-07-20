@@ -6,6 +6,7 @@ import { lessons, getLesson } from "@/lib/lessons";
 import fs from "fs/promises";
 import path from "path";
 import { createServerSupabase } from "@/lib/supabase-server";
+import { CopyCode } from "@/components/CopyCode";
 
 export async function generateStaticParams() {
   return lessons.map((lesson) => ({ slug: lesson.slug }));
@@ -88,7 +89,13 @@ export default async function LessonPage({
       {hasAccess ? (
         content ? (
           <div className="prose prose-gray max-w-none">
-            <MDXRemote source={content} options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }} />
+            <MDXRemote
+              source={content}
+              options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+              components={{
+                pre: ({ children }) => <CopyCode><pre>{children}</pre></CopyCode>,
+              }}
+            />
           </div>
         ) : (
           <div className="rounded-lg border border-amber-200 bg-amber-50 p-6">

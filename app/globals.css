@@ -139,6 +139,11 @@
   }
 }
 
+/* Make links in prose clearly visible */
+.prose a {
+  @apply text-primary-600 underline decoration-primary-300 underline-offset-2 hover:decoration-primary-600;
+}
+
 /* Table borders in prose content */
 .prose table {
   @apply border-collapse;
